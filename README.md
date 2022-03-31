@@ -1,7 +1,7 @@
 <h1> DESAFIO AULA 1 - DOCKER </h1>
 
 <p></p>
-Passos para criação de imagem e container:
+Passos para criação de imagem e container Docker:
 <p></p>
 1: Comando: <b>docker image build -t pauloazevedo88/conversao-temperatura:v1 .</b> para criar a imagem
 
@@ -59,6 +59,10 @@ df09053cd2be   pauloazevedo/conversao-temperatura:v1   "docker-entrypoint.s…" 
 3- O container deverá estar disponível acessando: <a href="http://localhost:8080">a minha applicação node.js</a>
 
 <h1> DESAFIO AULA 2 - Kubernetes </h1>
+
+<p></p>
+Passos para criação de cluster, usando k3d, para deployment de pauloazevedo88/conversao-temperatura:v1:
+<p></p>
 
 1- Comando: <b>docker image push pauloazevedo88/conversao-temperatura:v1</b> para publicar a imagem no <a href="https://hub.docker.com/">Docker Hub</a>
 
