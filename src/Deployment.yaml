@@ -29,9 +29,7 @@ spec:
   selector:
     app: web
   ports:
-    - port: 80
-      protocol: TCP
-      name: http
-      targetPort: 8080
+    - protocol: TCP
+      port: 8080
       nodePort: 30000
   type: NodePort

@@ -83,7 +83,7 @@ v1: digest: sha256:4fe7bec20ee3710563363420ca94675f6337bd9240b00955dc0b0322c6f06
 
 2- Instalação do <a href="https://k3d.io/">K3d</a> que é uma solução para cluster K8s baseada em Docker.
 
-3- Comando: <b>k3d cluster create cluster conversor --servers 2 --agents 2</b>
+3- Comando: <b>k3d cluster create clusterconversor --servers 2 --agents 2 -p "8080:30000@loadbalancer"</b>
 
 O output será semelhante a:
 ```bash
@@ -140,17 +140,19 @@ Comando: <b>kubectl get all</b>
 
 O output será semelhante a:
 ```bash
-NAME                                READY   STATUS              RESTARTS   AGE
-pod/meudeployment-cd98fdbf9-kkb4z   0/1     ContainerCreating   0          13s
-pod/meudeployment-cd98fdbf9-lnrsm   0/1     ContainerCreating   0          13s
+NAME                                READY   STATUS    RESTARTS   AGE
+pod/meudeployment-cd98fdbf9-2h2ht   1/1     Running   0          2m19s
+pod/meudeployment-cd98fdbf9-hs6sr   1/1     Running   0          2m19s
 
 NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
-service/kubernetes   ClusterIP   10.43.0.1       <none>        443/TCP        14m
-service/web          NodePort    10.43.162.160   <none>        80:30000/TCP   13s
+service/kubernetes   ClusterIP   10.43.0.1       <none>        443/TCP        8m25s
+service/web          NodePort    10.43.125.108   <none>        80:30000/TCP   2m19s
 
 NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/meudeployment   0/2     2            0           13s
+deployment.apps/meudeployment   2/2     2            2           2m19s
 
 NAME                                      DESIRED   CURRENT   READY   AGE
-replicaset.apps/meudeployment-cd98fdbf9   2         2         0       13s
+replicaset.apps/meudeployment-cd98fdbf9   2         2         2       2m19s
 ```
+
+6- O container deverá estar disponível acessando: <a href="http://localhost:8080">a minha applicação node.js</a>
