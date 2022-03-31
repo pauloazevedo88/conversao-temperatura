@@ -3,7 +3,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSfOpPKjqX20JPySoYkiRAaxQ3ZjoqHGhxZSmU4X
 <p></p>
 Passos para criação de imagem e container:
 <p></p>
-1: Comando: <b>docker image build -t pauloazevedo/conversao-temperatura:v1 .</b>
+1: Comando: <b>docker image build -t pauloazevedo88/conversao-temperatura:v1 .</b> para criar a imagem
 
 O output será semelhante a:
 ```bash
@@ -41,12 +41,12 @@ Step 7/7 : CMD [ "node" , "server.js" ]
 Removing intermediate container dcb21437fb62
  ---> 5b8dd121f597
 Successfully built 5b8dd121f597
-Successfully tagged pauloazevedo/conversao-temperatura:v1
+Successfully tagged pauloazevedo88/conversao-temperatura:v1
 ```
 
 Usando o comando <b>docker image ls</b> é possível ver a imagem na lista
 
-2-Comando: <b>docker container run -d --rm --name conversor -p 8080:8080 pauloazevedo/conversao-temperatura:v1</b>
+2-Comando: <b>docker container run -d --rm --name conversor -p 8080:8080 pauloazevedo88/conversao-temperatura:v1</b> para arrancar com o container
 
 Usando o comando <b>docker container ls</b> é possível listar containers
 
@@ -57,3 +57,24 @@ df09053cd2be   pauloazevedo/conversao-temperatura:v1   "docker-entrypoint.s…" 
 ```
 
 3- O container deverá estar disponível acessando: <a href="http://localhost:8080">a minha applicação node.js</a>
+
+4-Comando: <b>docker image push pauloazevedo88/conversao-temperatura:v1</b> para publicar a imagem no <a href="https://hub.docker.com/">Docker Hube</a>
+
+O output será semelhante a:
+```bash
+The push refers to repository [docker.io/pauloazevedo88/conversao-temperatura]
+327c86979d43: Pushed
+6c76d3f9a35d: Pushed
+9c5b422b48b6: Pushed
+5c3a1f687044: Pushed
+b396b15272a0: Pushed
+5e14cddde987: Pushed
+41fb65fa14b3: Pushed
+9e6164f16476: Pushed
+627d03f17169: Pushed
+6b9b07bf46f5: Pushed
+88139fe969ab: Pushed
+83f556e4c108: Pushed
+7362f7f77851: Pushed
+v1: digest: sha256:4fe7bec20ee3710563363420ca94675f6337bd9240b00955dc0b0322c6f0620d size: 3051
+```
