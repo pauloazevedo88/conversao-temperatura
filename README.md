@@ -1,5 +1,5 @@
 <h1> DESAFIO AULA 1 - DOCKER </h1>
-https://docs.google.com/forms/d/e/1FAIpQLSfOpPKjqX20JPySoYkiRAaxQ3ZjoqHGhxZSmU4XK1t4BYRtMg/viewform
+
 <p></p>
 Passos para criação de imagem e container:
 <p></p>
@@ -58,7 +58,9 @@ df09053cd2be   pauloazevedo/conversao-temperatura:v1   "docker-entrypoint.s…" 
 
 3- O container deverá estar disponível acessando: <a href="http://localhost:8080">a minha applicação node.js</a>
 
-4-Comando: <b>docker image push pauloazevedo88/conversao-temperatura:v1</b> para publicar a imagem no <a href="https://hub.docker.com/">Docker Hube</a>
+<h1> DESAFIO AULA 2 - Kubernetes </h1>
+
+1- Comando: <b>docker image push pauloazevedo88/conversao-temperatura:v1</b> para publicar a imagem no <a href="https://hub.docker.com/">Docker Hub</a>
 
 O output será semelhante a:
 ```bash
@@ -77,4 +79,51 @@ b396b15272a0: Pushed
 83f556e4c108: Pushed
 7362f7f77851: Pushed
 v1: digest: sha256:4fe7bec20ee3710563363420ca94675f6337bd9240b00955dc0b0322c6f0620d size: 3051
+```
+
+2- Instalação do <a href="https://k3d.io/">K3d</a> que é uma solução para cluster K8s baseada em Docker.
+
+3. Comando: <b>k3d cluster create cluster conversor --servers 2 --agents 2</b>
+
+O output será semelhante a:
+```bash
+INFO[0000] Prep: Network
+INFO[0000] Created network 'k3d-clusterconversor'
+INFO[0000] Created image volume k3d-clusterconversor-images
+INFO[0000] Starting new tools node...
+INFO[0000] Creating initializing server node
+INFO[0000] Creating node 'k3d-clusterconversor-server-0'
+INFO[0000] Starting Node 'k3d-clusterconversor-tools'
+INFO[0001] Creating node 'k3d-clusterconversor-server-1'
+INFO[0001] Creating node 'k3d-clusterconversor-agent-0'
+INFO[0001] Creating node 'k3d-clusterconversor-agent-1'
+WARN[0001] You're creating 2 server nodes: Please consider creating at least 3 to achieve etcd quorum & fault tolerance
+INFO[0001] Creating LoadBalancer 'k3d-clusterconversor-serverlb'
+INFO[0001] Using the k3d-tools node to gather environment information
+INFO[0002] HostIP: using network gateway 172.22.0.1 address
+INFO[0002] Starting cluster 'clusterconversor'
+INFO[0002] Starting the initializing server...
+INFO[0002] Starting Node 'k3d-clusterconversor-server-0'
+INFO[0003] Starting servers...
+INFO[0003] Starting Node 'k3d-clusterconversor-server-1'
+INFO[0022] Starting agents...
+INFO[0022] Starting Node 'k3d-clusterconversor-agent-0'
+INFO[0022] Starting Node 'k3d-clusterconversor-agent-1'
+INFO[0030] Starting helpers...
+INFO[0030] Starting Node 'k3d-clusterconversor-serverlb'
+INFO[0037] Injecting records for hostAliases (incl. host.k3d.internal) and for 5 network members into CoreDNS configmap...
+INFO[0039] Cluster 'clusterconversor' created successfully!
+INFO[0039] You can now use it like this:
+kubectl cluster-info
+```
+
+Comando: <b>kubectl get nodes</b>
+
+O output será semelhante a:
+```bash
+NAME                            STATUS   ROLES                       AGE     VERSION
+k3d-clusterconversor-agent-0    Ready    <none>                      3m38s   v1.22.7+k3s1
+k3d-clusterconversor-agent-1    Ready    <none>                      3m38s   v1.22.7+k3s1
+k3d-clusterconversor-server-0   Ready    control-plane,etcd,master   3m54s   v1.22.7+k3s1
+k3d-clusterconversor-server-1   Ready    control-plane,etcd,master   3m42s   v1.22.7+k3s1
 ```
