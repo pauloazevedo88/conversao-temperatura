@@ -2,7 +2,7 @@
 https://docs.google.com/forms/d/e/1FAIpQLSfOpPKjqX20JPySoYkiRAaxQ3ZjoqHGhxZSmU4XK1t4BYRtMg/viewform
 <p></p>
 Passos para criação de imagem e container:
-
+<p></p>
 1: Comando: <b>docker image build -t pauloazevedo/conversao-temperatura:v1 .</b>
 
 O output será semelhante a:
