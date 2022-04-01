@@ -160,3 +160,45 @@ replicaset.apps/meudeployment-cd98fdbf9   2         2         2       2m19s
 ```
 
 6- O container deverá estar disponível acessando: <a href="http://localhost:8080">a minha applicação node.js</a>
+
+<h1> DESAFIO AULA 3 - Pipeline CICD </h1>
+
+<p></p>
+Usando o cluster já criado na DigitalOcean para deployment de Conversao Temperatura usando CICD Github Actions:
+<p></p>
+
+Para consultar novos deployments: Comando: <b>kubectl get all</b>
+O output será semelhante a:
+```bash
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/meudeployment-5f66976b8d-qn5tl    1/1     Running   0          48s
+pod/meudeployment-5f66976b8d-xjpzj    1/1     Running   0          54s
+pod/mongo-6d595f4df-gnzqd             1/1     Running   0          158m
+pod/mongodb-66b8d4645-pq974           1/1     Running   0          5h35m
+pod/rottentomatoes-64d7d98554-m8tjc   1/1     Running   0          149m
+
+NAME                     TYPE           CLUSTER-IP       EXTERNAL-IP       PORT(S)        AGE
+service/kubernetes       ClusterIP      10.245.0.1       <none>            443/TCP        6h15m
+service/mongo            ClusterIP      10.245.89.238    <none>            27017/TCP      158m
+service/mongodb          ClusterIP      10.245.76.253    <none>            27017/TCP      5h35m
+service/rottentomatoes   LoadBalancer   10.245.171.186   174.138.104.251   80:30000/TCP   5h35m
+service/web              LoadBalancer   10.245.100.2     167.99.17.192     80:31555/TCP   13m
+
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/meudeployment    2/2     2            2           13m
+deployment.apps/mongo            1/1     1            1           158m
+deployment.apps/mongodb          1/1     1            1           5h35m
+deployment.apps/rottentomatoes   1/1     1            1           5h35m
+
+NAME                                        DESIRED   CURRENT   READY   AGE
+replicaset.apps/meudeployment-5f66976b8d    2         2         2       55s
+replicaset.apps/meudeployment-bd6464cd5     0         0         0       13m
+replicaset.apps/mongo-6d595f4df             1         1         1       158m
+replicaset.apps/mongodb-66b8d4645           1         1         1       5h35m
+replicaset.apps/rottentomatoes-5ddf58f599   0         0         0       158m
+replicaset.apps/rottentomatoes-64d7d98554   1         1         1       149m
+replicaset.apps/rottentomatoes-6bdcf4996    0         0         0       164m
+replicaset.apps/rottentomatoes-cf7f4b4fd    0         0         0       5h35m
+```
+
+Applicação disponível acessando: <a href="http://167.99.17.192/">a minha applicação node.js</a>
