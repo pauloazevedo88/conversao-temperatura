@@ -57,4 +57,4 @@ jobs:
         with:
           images: pauloazevedo88/conversao-temperatura:v${{ github.run_number }}
           manifests: |
-            Deployment.yaml
+            src/Deployment.yaml
